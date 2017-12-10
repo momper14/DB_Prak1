@@ -98,19 +98,20 @@ public class Main {
         raf2.writeBytes(oneLine.toString());
         oneLine.setLength(0);
         
-        System.out.println("Erfolgreich aufgenommen.\n\nWeiter mit beliebiger Taste.");
-        System.in.read();
+        System.out.println("Erfolgreich aufgenommen.\n\nWeiter mit Enter.");
+        in.readLine();
     }
 
     public static void sequentiellerZugriff(RandomAccessFile raf1) throws IOException, ClassNotFoundException {
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         System.out.printf("%6s | %15s | %10s | %7s | %10s\n","ArtNr","Bezeichnung","Einheit","Preis","Steuersatz in %");
         raf1.seek(0);
         while(null!=(readline = raf1.readLine())){
             split = readline.split(";");
             System.out.printf("%6d | %15s | %10s | %6.2f€ | %6d \n",Integer.parseInt(split[0]),split[1],split[2],Double.parseDouble(split[3]),Integer.parseInt(split[4]));
         }
-        System.out.println("\nWeiter mit beliebiger Taste.");
-        System.in.read();
+        System.out.println("\nWeiter mit Enter Taste.");
+        in.read();
     }
 
     public static void lesenderDirekzugriff(RandomAccessFile raf1) throws IOException, ClassNotFoundException {
@@ -139,8 +140,8 @@ public class Main {
             System.out.println("Artikelnummer nicht gefunden.");
         }
         //temp = 0;
-        System.out.println("\nWeiter mit beliebiger Taste.");
-        System.in.read();
+        System.out.println("\nWeiter mit Enter.");
+        in.read();
     }
 
     public static void beenden(RandomAccessFile raf1,RandomAccessFile raf2) throws IOException, ClassNotFoundException {
